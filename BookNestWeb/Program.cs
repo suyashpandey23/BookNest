@@ -1,3 +1,5 @@
+using BookNest.BAL.Services;
+using BookNest.BAL.Services.IServices;
 using Microsoft.EntityFrameworkCore;
 using BookNest.Data;
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +11,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 var app = builder.Build();
 
@@ -27,8 +30,14 @@ app.UseAuthorization();
 app.MapStaticAssets();
 
 app.MapControllerRoute(
+        name: "MyArea",
+        pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}")
+    .WithStaticAssets();
+
+app.MapControllerRoute(
         name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}")
+        pattern: "{controller=Home}/{action=Index}/{id?}",
+        defaults: new { area = "Customer" })
     .WithStaticAssets();
 
 

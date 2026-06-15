@@ -1,6 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookNest", "BookNest\BookNest.csproj", "{D98E8A29-F2F6-4C2D-92B8-B3CE153117A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookNestWeb", "BookNestWeb\BookNestWeb.csproj", "{D98E8A29-F2F6-4C2D-92B8-B3CE153117A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookNest.DAL", "BookNest.DAL\BookNest.DAL.csproj", "{8DD623A9-7E28-4DFC-A8A0-7C76156C1304}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookNest.BAL", "BookNest.BAL\BookNest.BAL.csproj", "{A90FC459-E43B-4633-9860-960C9BA1699B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookNest.Models", "BookNest.Models\BookNest.Models.csproj", "{1571DA60-2C98-4B92-B65E-118F1725715F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookNest.Utility", "BookNest.Utility\BookNest.Utility.csproj", "{F9A3268B-9FD8-45A5-9A99-7CD409B3C833}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +20,21 @@ Global
 		{D98E8A29-F2F6-4C2D-92B8-B3CE153117A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D98E8A29-F2F6-4C2D-92B8-B3CE153117A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D98E8A29-F2F6-4C2D-92B8-B3CE153117A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DD623A9-7E28-4DFC-A8A0-7C76156C1304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DD623A9-7E28-4DFC-A8A0-7C76156C1304}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DD623A9-7E28-4DFC-A8A0-7C76156C1304}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DD623A9-7E28-4DFC-A8A0-7C76156C1304}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A90FC459-E43B-4633-9860-960C9BA1699B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A90FC459-E43B-4633-9860-960C9BA1699B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A90FC459-E43B-4633-9860-960C9BA1699B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A90FC459-E43B-4633-9860-960C9BA1699B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1571DA60-2C98-4B92-B65E-118F1725715F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1571DA60-2C98-4B92-B65E-118F1725715F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1571DA60-2C98-4B92-B65E-118F1725715F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1571DA60-2C98-4B92-B65E-118F1725715F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9A3268B-9FD8-45A5-9A99-7CD409B3C833}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9A3268B-9FD8-45A5-9A99-7CD409B3C833}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9A3268B-9FD8-45A5-9A99-7CD409B3C833}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9A3268B-9FD8-45A5-9A99-7CD409B3C833}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
