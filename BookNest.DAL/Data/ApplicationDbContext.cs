@@ -1,16 +1,28 @@
 using BookNest.Models;
-namespace BookNest.Data;
+using BookNest.Models.ViewModels;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
+namespace BookNest.DAL.Data;
 using Microsoft.EntityFrameworkCore;
 
-public class ApplicationDbContext: DbContext {
+public class ApplicationDbContext : IdentityDbContext<ApplicationUser> {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {
     }
     
     public DbSet<Category> Categories{ get; set; }
     public DbSet<Product> Products{ get; set; }
     
+    public DbSet<ApplicationUser> ApplicationUsers{ get; set; }
+    
+    public DbSet<ShoppingCart> ShoppingCarts{ get; set; }
+    
+    public DbSet<OrderHeader> OrderHeaders{ get; set; }
+    
+    public DbSet<OrderDetails> OrderDetails{ get; set; }
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
-        //base.OnModelCreating();
+        base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Category>().HasData(
             new Category{Id=1, Name="Action",DisplayOrder = 1},
             new Category{Id=2, Name="SciFi", DisplayOrder = 2},

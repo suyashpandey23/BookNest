@@ -1,11 +1,14 @@
 using BookNest.BAL.Services.IServices;
 using Microsoft.AspNetCore.Mvc;
-using BookNest.Data;
+using BookNest.DAL.Data;
 using BookNest.Models;
+using BookNest.Utility;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookNest.Areas.Customer.Controllers;
 
-[Area("Customer")]
+[Area("Admin")]
+[Authorize(Roles = SD.RoleAdmin)]
 public class CategoryController : Controller {
     // GET
     private readonly ICategoryService _categoryService;
@@ -13,7 +16,8 @@ public class CategoryController : Controller {
     public CategoryController(ICategoryService categoryService) {
         _categoryService = categoryService;
     }
-
+    
+    [AllowAnonymous]
     public async Task<IActionResult> Index() {
         var categories = await _categoryService.GetAllCategoriesAsync();
         return View(categories);

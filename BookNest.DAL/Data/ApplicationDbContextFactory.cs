@@ -1,9 +1,9 @@
 // csharp
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using BookNest.Data;
+using BookNest.DAL.Data;
 
-namespace BookNest.DataAccess.Data;
+namespace BookNest.DAL.DataAccess.Data;
 
 public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
 {

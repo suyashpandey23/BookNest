@@ -1,7 +1,11 @@
 using BookNest.BAL.Services;
 using BookNest.BAL.Services.IServices;
 using Microsoft.EntityFrameworkCore;
-using BookNest.Data;
+using BookNest.DAL.Data;
+using BookNest.Models;
+using Microsoft.AspNetCore.Identity;
+// using BookNest.Areas.Identity.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -11,8 +15,27 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-builder.Services.AddScoped<ICategoryService, CategoryService>();
+// builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
 
+builder.Services.AddIdentity<ApplicationUser,IdentityRole>(options =>
+{
+    options.Password.RequireDigit = true;              // Must have at least one number (0-9)
+    options.Password.RequireLowercase = true;          // Must have at least one lowercase letter (a-z)
+    options.Password.RequireUppercase = true;          // Must have at least one uppercase letter (A-Z)
+    options.Password.RequireNonAlphanumeric = true;    // Must have at least one special character (!@#$%^&*)
+    options.Password.RequiredLength = 7;               // Minimum 7 characters
+    options.Password.RequiredUniqueChars = 1;          // Minimum unique characters
+}).AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+
+builder.Services.ConfigureApplicationCookie(options => {
+    options.LoginPath = "/identity/Account/Login";
+    options.AccessDeniedPath = "/identity/Account/AccessDenied";
+    options.LogoutPath = "/identity/Account/Logout";
+    options.ExpireTimeSpan = TimeSpan.FromDays(30);
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,6 +48,7 @@ if (!app.Environment.IsDevelopment()) {
 app.UseHttpsRedirection();
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();
